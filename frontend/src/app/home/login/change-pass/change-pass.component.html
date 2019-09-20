@@ -1,0 +1,55 @@
+<h1>Promena lozinke<mat-icon>cached</mat-icon></h1>
+
+
+<div>
+  <mat-error style="max-height: 100%; max-width: 100%" *ngIf="errOccured">
+    {{errMsg}}
+  </mat-error>
+</div>
+<mat-vertical-stepper [linear]="true" #stepper>
+  <mat-step [editable]="false" [completed]="compFirst">
+    <form #firstForm="ngForm">
+      <ng-template matStepLabel>Autentifikacija</ng-template>
+      <mat-form-field>
+        <input required matInput placeholder="Korisničko ime" id="username" name="username" [(ngModel)]="user.username"
+        #username="ngModel">
+      </mat-form-field>
+      <mat-form-field>
+        <input required matInput placeholder="JMBG" id="personalId" name="personalId" [(ngModel)]="user.personalId"
+        #username="ngModel">
+      </mat-form-field>
+      <div>
+        <button [disabled]="!firstForm.valid" mat-button (click)="stepFirst(stepper)">Dalje</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [editable]="false" [completed]="compSecond">
+    <form #secondForm="ngForm">
+      <ng-template matStepLabel>Odgovor na sigurnosno pitanje</ng-template>
+      <h2>{{user.autQuestion}}?</h2>
+      <mat-form-field>
+        <input matInput placeholder="Odgovor" id="autAnswer" name="autAnswer" [(ngModel)]="user.autAnswer"
+        #autAnswer="ngModel" required>
+      </mat-form-field>
+      <div>
+        <button mat-button (click)="stepSecond(stepper)">Dalje</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [editable]="false" [completed]="compThird"> 
+    <form #thirdForm="ngForm">
+      <ng-template matStepLabel>Nova lozinka</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Nova lozinka" id="newPassword" name="newPassword" [(ngModel)]="user.password"
+        #newPassword="ngModel" required type="password">
+      </mat-form-field>
+      <div>
+        <button mat-button (click)="stepThird(stepper)">Dalje</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Kraj</ng-template>
+    <h5 style= "color:green">Uspeh <mat-icon>check_circle</mat-icon></h5>
+  </mat-step>
+</mat-vertical-stepper>

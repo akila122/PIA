@@ -1,0 +1,17 @@
+<div style="display: flex;
+align-items: center;
+justify-content: center;">
+  <mat-spinner *ngIf="doSpin"></mat-spinner>
+  <h1 *ngIf="!doSpin && users.length==0">Nema pristiglih zahteva</h1>
+  <div *ngIf="users.length!=0">
+    <h1 style="text-align: center">Korisnici</h1>
+    <div *ngFor="let user of users">
+      <app-user-card [user]="user">
+          <mat-card-actions>
+              <button mat-raised-button color="primary" (click) = "regulate(user,true)">Prihvati</button>
+              <button mat-raised-button color="warn" (click) = "regulate(user,false)">Odbij</button>
+            </mat-card-actions>
+      </app-user-card>
+    </div>
+  </div>
+</div>

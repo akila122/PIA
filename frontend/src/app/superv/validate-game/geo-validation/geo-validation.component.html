@@ -1,0 +1,75 @@
+<app-duel-supervisor *ngIf="!headerData.solo" [data]="headerData"></app-duel-supervisor>
+<app-user-card *ngIf="headerData.solo" [shortVersion]="true" [user]="headerData.blueUser">
+  <h5>IGRA DANA</h5>
+</app-user-card>
+<div style="display: flex;
+align-items: center;
+justify-content: center;">
+  <form #fivesForm="ngForm">
+    <table style="align-content: center">
+      <tr *ngIf="infoMsg">
+        <td style="width: 100%;">
+          <h1 style="text-align: center; width: 100%;" [style.color]="infoColor">
+            {{infoMsg}}
+          </h1>
+        </td>
+      </tr>
+      <tr *ngIf="showRes">
+        <td>
+          <table style="align-content: center; display: flex;
+          align-items: center;
+          justify-content: center; width: 100%">
+            <tr *ngFor="let res of resultsInfo;let i = index">
+              <td [style.color]="colorForRes[res.answerdBy]">
+                <h5>
+                  <mat-icon>{{icons[res.kind]}}</mat-icon>
+                </h5>
+              </td>
+              <td [style.color]="colorForRes[res.answerdBy]">
+                <h5>{{res.answer?res.answer : 'Bez odgovora'}}</h5>
+              </td>
+              <td [style.color]="colorForRes[res.answerdBy]">
+                <h5>{{res.pointsAdded}}</h5>
+              </td>
+              <td [style.color]="colorForRes[res.answerdBy]">
+                <h5>
+                  <mat-icon>{{iconForRes[res.validInfo]}}</mat-icon>
+                </h5>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+      <tr *ngIf="doSpin">
+        <td>
+          <mat-spinner style="margin:0 auto;" [diameter]="20"></mat-spinner>
+        </td>
+      </tr>
+      <tr *ngIf="loaded">
+        <td>
+          <mat-card style=" justify-content: center">
+            <mat-card-header>
+              <mat-icon>{{icons[data.answers[iter].kind]}}</mat-icon>
+              <mat-card-title>Da li je ovaj pojam {{translateMap[data.answers[iter].kind]}}?</mat-card-title>
+              <mat-card-subtitle>Validacija</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <h1 style="text-align: center" *ngIf="data.answers[iter].answer">
+                {{data.answers[iter].answer.toUpperCase()}}</h1>
+            </mat-card-content>
+            <mat-card-actions style="align-content: center">
+              <button mat-raised-button color="primary" (click)="valid()">
+                <mat-icon>thumb_up</mat-icon>
+              </button>
+              <button mat-raised-button color="warn" (click)="invalid()">
+                <mat-icon>thumb_down</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

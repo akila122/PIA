@@ -1,0 +1,18 @@
+
+<div *ngIf="!doSpin && !errMsg && !infoMsg">
+  <h1>Izaberite datum selektovane igre</h1>
+  <form>
+    <mat-form-field>
+      <input [min] = "today" required matInput [matDatepicker]="picker3" placeholder="Datum igre dana" [(ngModel)]="date" name="any0">
+      <mat-datepicker-toggle name="any1" matSuffix [for]="picker3"></mat-datepicker-toggle>
+      <mat-datepicker name="any2" #picker3></mat-datepicker>
+    </mat-form-field>
+    <div><button mat-raised-button (click)="send()" color="primary">Pošalji</button></div>
+  </form>
+</div>
+<mat-spinner *ngIf="doSpin"></mat-spinner>
+<mat-error *ngIf="errMsg && !doSpin">
+  {{errMsg}} <mat-icon>check_circle</mat-icon>
+</mat-error>
+<h5 *ngIf="infoMsg" style="color:green">{{infoMsg}} <mat-icon>check_circle</mat-icon>
+</h5>

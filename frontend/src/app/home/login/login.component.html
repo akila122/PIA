@@ -1,0 +1,73 @@
+<div style="display: flex;
+align-items: center;
+justify-content: center;">
+  <form #loginForm="ngForm">
+    <table>
+      <tr>
+        <h1>Prijavite se na sistem kako biste započeli partiju:</h1>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Korisničko ime" id="username" name="username" [(ngModel)]="user.username"
+              #username="ngModel" required>
+            <mat-error *ngIf="username.invalid && (username.dirty || username.touched)">
+              Korisničko ime je <strong>neophodno</strong>
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Lozinka" id="password" name="password" [(ngModel)]="user.password"
+              #password="ngModel" required type="password">
+            <mat-error *ngIf="password.invalid && (password.dirty || password.touched)">
+              Lozinka je <strong>neophodna</strong>
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table>
+            <tr>
+              <td>
+                <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login()">
+                  Prijava
+                </button>
+              </td>
+              <td>
+                <button (click) = "resetPass()"mat-raised-button color="primary">
+                  Promena lozinke
+                </button>
+              </td>
+              <td>
+                <mat-spinner *ngIf="doSpin" [diameter]="40"></mat-spinner>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-error *ngIf="errOccured && !doSpin">
+            {{errMsg}}
+          </mat-error>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button *ngIf="changePass" mat-raised-button color="warn" (click)="openDialog()">Zaboravili ste
+            lozinku?</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div style="height: 50px; width: 50px"></div>
+        </td>
+      </tr>
+
+    </table>
+  </form>
+</div>

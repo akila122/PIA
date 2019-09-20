@@ -1,0 +1,39 @@
+<h1>Promena lozinke <mat-icon>cached</mat-icon></h1>
+
+<form #firstForm="ngForm">
+  <div>
+  <mat-form-field>
+    <input required matInput placeholder="Korisničko ime" id="username" name="username" [(ngModel)]="user.username"
+      #username="ngModel">
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+    <input matInput placeholder="Stara lozinka" id="password" name="password" [(ngModel)]="user.password"
+      #password="ngModel" required type="password">
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+    <input matInput placeholder="Nova lozinka" id="_newPassword" name="_newPassword" [(ngModel)]="newPassword"
+      #_newPassword="ngModel" required type="password">
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+    <input matInput placeholder="Ponovljena nova lozinka" id="_newPasswordClone" name="_newPasswordClone"
+      [(ngModel)]="newPasswordClone" #_newPasswordClone="ngModel" required type="password">
+  </mat-form-field>
+</div>
+  <div>
+    <button [disabled]="!firstForm.valid" mat-raised-button color="primary" (click)="resetPass()">Promeni</button>
+  </div>
+</form>
+<div>
+  <mat-error *ngIf="errOccured">
+    {{errMsg}}
+  </mat-error>
+</div>
+<div *ngIf="success">
+<h5 style= "color:green">Uspeh <mat-icon>check_circle</mat-icon></h5>
+</div>

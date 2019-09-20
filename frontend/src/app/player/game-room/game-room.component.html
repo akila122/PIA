@@ -1,0 +1,54 @@
+<div style="display: flex;
+align-items: center;
+justify-content: center;">
+
+  <table style="align-content: center">
+    <tr>
+      <td>
+        <h1>{{ gameCreated ? 'Čeka se na protivnika': 'Kreirajte svoju partiju ili se priključite dostupnoj'}}</h1>
+      </td>
+    </tr>
+    <tr>
+      <td *ngIf="!gameCreated">
+        <button mat-raised-button color="primary" (click)="addGame()">
+            <mat-icon>add</mat-icon>Kreiraj partiju
+        </button>
+      </td>
+      <td *ngIf="gameCreated">
+        <button style="margin-bottom: 20px" mat-raised-button color="primary" (click)="cancleGame()">
+            <mat-icon>close</mat-icon>Poništi partiju
+        </button>
+      </td>
+    </tr>
+    <tr *ngIf="doSpin">
+      <td>
+        <mat-spinner style="margin:0 auto;" [diameter]="40"></mat-spinner>
+      </td>
+    </tr>
+    <tr *ngIf="!gameCreated">
+      <td>
+        <h5 style="color:green">{{games.length>0 ? 'Dostupne partije' : 'Nema dostupnih partija'}}</h5>
+      </td>
+    </tr>
+    <div style="display: flex;
+    align-items: center;
+    justify-content: center;" *ngIf="!gameCreated">
+      <tr *ngFor="let game of games">
+        <td>
+          <app-user-card [shortVersion]="true" [user]="game">
+            <mat-card-actions>
+              <button mat-raised-button color="primary" (click)="startGame(game)">Igraj</button>
+            </mat-card-actions>
+          </app-user-card>
+        </td>
+      </tr>
+    </div>
+    <tr>
+      <td>
+        <div style="height: 100px; width: 100px"></div>
+      </td>
+    </tr>
+  </table>
+
+
+</div>

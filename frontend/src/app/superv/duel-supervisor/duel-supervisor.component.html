@@ -1,0 +1,16 @@
+<table *ngIf="data" style="width: 100%; height:10%">
+  <tr>
+    <td
+      style="width:50%; max-width: 50%; border-color: #3f51b5;border-width: 10px; border-style: dashed;border-radius: 30px">
+      <app-user-card [shortVersion]="true" [user]="data.blueUser">
+        <h5 style="color:#3f51b5" *ngIf="points">{{data.bluePoints}}</h5>
+      </app-user-card>
+    </td>
+    <td
+      style="width:50%; max-width: 50%; border-color: #f44336;border-width: 10px;border-style: dashed;border-radius: 30px">
+      <app-user-card [shortVersion]="true" [user]="data.redUser">
+        <h5 style="color:#f44336" *ngIf="points">{{data.redPoints}}</h5>
+      </app-user-card>
+    </td>
+  </tr>
+</table>

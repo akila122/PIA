@@ -1,0 +1,127 @@
+<div style="display: flex;
+align-items: center;
+justify-content: center;">
+  <form #myNumForm="ngForm">
+    <table style="align-content: center">
+      <tr *ngIf="infoMsg">
+        <td style="width: 100%;">
+          <h1 style="text-align: center; width: 100%;" [style.color]="infoColor">
+            {{infoMsg}}
+          </h1>
+        </td>
+      </tr>
+      <tr *ngIf="doSpin">
+        <td>
+          <mat-spinner style="margin:0 auto;" [diameter]="20"></mat-spinner>
+        </td>
+      </tr>
+      <tr *ngIf="loaded">
+        <td>
+          <table style="align-content: center; width: 100%">
+            <tr *ngIf="loaded">
+              <td style="width: 25%">
+                <button style="width: 100%" mat-raised-button color="warn" [disabled]="disabled[0] || clickGuard.includes(0)" (click)="clickNum(0)">
+                  {{vals[0]}}
+                </button>
+              </td>
+              <td  style="width: 25%">
+                <button style="width: 100%" mat-raised-button color="warn" [disabled]="disabled[1] || clickGuard.includes(1)" (click)="clickNum(1)">
+                  {{vals[1]}}
+                </button>
+              </td>
+              <td  style="width: 25%">
+                <button style="width: 100%" mat-raised-button color="warn" [disabled]="disabled[2] || clickGuard.includes(2)" (click)="clickNum(2)">
+                  {{vals[2]}}
+                </button>
+              </td>
+              <td  style="width: 25%">
+                <button style="width: 100%" mat-raised-button color="warn" [disabled]="disabled[3] || clickGuard.includes(3)" (click)="clickNum(3)">
+                  {{vals[3]}}
+                </button>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr *ngIf="loaded">
+        <td>
+          <table style="align-content: center;width: 100%">
+            <tr *ngIf="loaded">
+              <td style="width: 50%">
+                <button style="width: 100%" mat-raised-button color="warn" [disabled]="disabled[4] || clickGuard.includes(4)" (click)="clickNum(4)">
+                  {{vals[4]}}
+                </button>
+              </td>
+              <td style="width: 50%">
+                <button style="width: 100%" mat-raised-button color="warn" [disabled]="disabled[5] || clickGuard.includes(5)" (click)="clickNum(5)">
+                  {{vals[5]}}
+                </button>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr *ngIf="loaded">
+        <td style="width: 100%">
+          <button style="width: 100%" mat-raised-button color="accent" [disabled]="disabled[6]" (click)="clickNum(6)">
+            {{vals[6]}}
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="loaded">
+        <td>
+          <table style="align-content: center;width: 100%"> 
+            <tr>
+              <td style="width: 33%">
+                <button style = "width: 100%"[disabled]='opsDisabled' mat-raised-button color="warn" (click)="add()">+</button>
+              </td>
+              <td style="width: 33%">
+                <button style = "width: 100%" [disabled]='opsDisabled' mat-raised-button color="warn" (click)="sub()">-</button>
+              </td>
+              <td style="width: 33%">
+                <button style = "width: 100%" [disabled]='opsDisabled' mat-raised-button color="warn" (click)="mul()">*</button>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 33%">
+                <button style = "width: 100%" [disabled]='opsDisabled' mat-raised-button color="warn" (click)="div()">/</button>
+              </td>
+              <td style="width: 33%">
+                <button style = "width: 100%" [disabled]='opsDisabled' mat-raised-button color="warn" (click)="leftBracket()">(</button>
+              </td>
+              <td style="width: 33%">
+                <button style = "width: 100%" [disabled]='opsDisabled' mat-raised-button color="warn" (click)="rightBracket()">)</button>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr *ngIf="loaded">
+        <td>
+          <table style="align-content: center;width: 100%">
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Izraz" id="_answer" name="_answer" [(ngModel)]="answer"
+                    #_answer="ngModel" disabled="true">
+                </mat-form-field>
+              </td>
+              <td>
+                <button mat-raised-button color="warn" [disabled]="answer.length<=0" (click)="del()">
+                  <mat-icon>backspace</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr *ngIf="loaded">
+        <td>
+          <button mat-raised-button color="primary" [disabled]="!canSubmit" (click)="submit(true)">
+            <mat-icon>save_alt</mat-icon>Potvrdi
+          </button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

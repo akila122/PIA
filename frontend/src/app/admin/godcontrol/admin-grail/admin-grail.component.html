@@ -1,0 +1,45 @@
+<mat-spinner *ngIf="doSpin"></mat-spinner>
+<div *ngIf="!doSpin">
+  <mat-card style="text-align: center">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>border_all</mat-icon><h1>Odaberite pehar</h1>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table style="width: 100%">
+      <tr>
+        <td>
+          <h5>PITANJE</h5>
+        </td>
+        <td>
+          <h5>ODGOVOR</h5>
+        </td>
+      </tr>
+      <tr *ngFor="let grail of grails[iter].data">
+        <td>
+          {{grail.question}}
+        </td>
+        <td>
+          {{grail.answer}}
+        </td>
+      </tr>
+    </table>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="goLeft()" mat-icon-button color="primary">
+        <mat-icon>
+          keyboard_arrow_left</mat-icon>
+      </button>
+      <button (click)="send()" mat-icon-button color="primary">
+        <mat-icon>
+          control_point</mat-icon>
+      </button>
+      <button (click)="goRight()" mat-icon-button color="primary">
+        <mat-icon>
+          keyboard_arrow_right</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

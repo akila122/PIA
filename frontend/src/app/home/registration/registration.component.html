@@ -1,0 +1,209 @@
+<div style="display: flex;
+align-items: center;
+justify-content: center;">
+  <table>
+    <tr>
+      <td>
+        <h1>Registraciona forma</h1>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-error style="max-height: 100%; max-width: 100%" *ngIf="errOccured">
+          {{errMsg}}
+        </mat-error>
+      </td>
+    </tr>
+  </table>
+
+
+  <mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [editable]="false" [completed]="compFirst">
+      <form #firstForm="ngForm">
+        <table>
+          <ng-template matStepLabel>Osnovni podaci</ng-template>
+          <tr>
+            <td>
+              <mat-form-field>
+                <input required matInput placeholder="Ime" id="name" name="name" [(ngModel)]="user.name"
+                  #name="ngModel">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field>
+                <input required matInput placeholder="Prezime" id="surname" name="surname" [(ngModel)]="user.surname"
+                  #surname="ngModel">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <mat-form-field>
+                <input required matInput placeholder="Zanimanje" id="profession" name="profession"
+                  [(ngModel)]="user.profession" #profession="ngModel">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+
+              <mat-form-field>
+                <input required matInput placeholder="JMBG" id="personalId" name="personalId"
+                  [(ngModel)]="user.personalId" #personalId="ngModel" >
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field>
+                <input required matInput [matDatepicker]="picker3" placeholder="Datum rođenja" [(ngModel)]="user.dateOfBirth"
+                  name="any0">
+                <mat-datepicker-toggle name="any1" matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker name="any2" #picker3></mat-datepicker>
+              </mat-form-field>
+            </td>
+          </tr>
+          <mat-radio-group [(ngModel)]="user.gender" name="any4" required>
+            <table>
+              <tr>
+                <td>
+                    <mat-label>Pol</mat-label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-radio-button value="false">
+                    Muško
+                  </mat-radio-button>
+                </td>
+                <td>
+                  <mat-radio-button value="true">
+                    Žensko
+                  </mat-radio-button>
+                </td>
+              </tr>
+            </table>
+          </mat-radio-group>
+          <tr>
+            <td>
+              <button [disabled]="!firstForm.valid" mat-button (click)="stepFirst(stepper)">Dalje</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </mat-step>
+    <mat-step [editable]="false" [completed]="compSecond">
+      <form #second="ngForm">
+        <table>
+          <ng-template matStepLabel>Kredencijali</ng-template>
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="E-mail" id="email" name="email" [(ngModel)]="user.email" #email="ngModel"
+                  required>
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Korisničko ime" id="username" name="username" [(ngModel)]="user.username"
+                  #username="ngModel" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Lozinka" id="password" name="password" [(ngModel)]="user.password"
+                  #password="ngModel" required type="password">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Potvrda lozinke" id="_passwordCheck" name="_passwordCheck"
+                  [(ngModel)]="passwordCheck" #_passwordCheck="ngModel" required type="password">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <mat-form-field>
+                    <mat-label>Tip naloga</mat-label>
+                    <mat-select required [(ngModel)]="user.userType" name="any">
+                      <mat-option value="PLAYER">Takmičar</mat-option>
+                      <mat-option value="SUPERVISOR">Supervizor</mat-option>
+                      <mat-option value="ADMINISTRATOR">Administrator</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </td>
+          </tr>
+
+          <div>
+            <button mat-button [disabled]="!second.valid" (click)="stepSecond(stepper)">Dalje</button>
+          </div>
+        </table>
+      </form>
+    </mat-step>
+    <mat-step [editable]="false" [completed]="compThird">
+      <form #thirdForm="ngForm">
+        <table>
+
+
+          <ng-template matStepLabel>Sigurnosno pitanje</ng-template>
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Pitanje" id="autQuestion" name="autQuestion" [(ngModel)]="user.autQuestion"
+                  #autQuestion="ngModel" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Odgovor" id="autAnswer" name="autAnswer" [(ngModel)]="user.autAnswer"
+                  #autAnswer="ngModel" required>
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <button  [disabled]="!thirdForm.valid" mat-button (click)="stepThird(stepper)">Dalje</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </mat-step>
+    <mat-step [editable]="false" [completed]="compFourth">
+      <form #fourth="ngForm">
+        <table>
+          <ng-template matStepLabel>Profilna slika</ng-template>
+          <tr>
+            <td>
+              <input  type="file" id="file" (change)="handleFileInput($event.target.files)">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button [disabled]="!fourth.valid" mat-button (click)="stepFourth(stepper)">Dalje</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Kraj</ng-template>
+      <h5 style="color:green">Uspeh <mat-icon>check_circle</mat-icon>
+      </h5>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

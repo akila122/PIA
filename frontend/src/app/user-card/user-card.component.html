@@ -1,0 +1,53 @@
+<mat-card>
+  <mat-card-header>
+    <div *ngIf="isLoaded" mat-card-avatar style="border:5px solid #673ab7"
+      [ngStyle]="{'background-image': 'url(' + src + ')','background-size': 'cover'}"></div>
+    <mat-card-title>{{user.username}}</mat-card-title>
+    <mat-card-subtitle>{{user.name}} {{user.surname}}</mat-card-subtitle>
+    <table *ngIf="!shortVersion" style="width: 100%">
+      <tr>
+        <td align="center" style="width: 16%">
+          <mat-icon>email</mat-icon>
+        </td>
+        <td align="center" style="width: 16%">
+          <mat-icon>perm_identity</mat-icon>
+        </td>
+        <td align="center" style="width: 16%">
+          <mat-icon>wc</mat-icon>
+        </td>
+        <td align="center" style="width: 16%">
+          <mat-icon>cake</mat-icon>
+        </td>
+        <td align="center" style="width: 16%">
+          <mat-icon>business</mat-icon>
+        </td>
+        <td *ngIf="user.approvedBy" align="center" style="width: 16%">
+          <mat-icon>thumb_up</mat-icon>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" style="width: 16%">
+          {{user.email}}
+        </td>
+        <td align="center" style="width: 16%">
+          {{user.userType == 'PLAYER' ? 'Takmičar' : user.userType=='ADMINISTRATOR' ? 'Administrator' : 'Supervizor'}}
+        </td>
+        <td align="center" style="width: 16%">
+          {{user.gender ? 'Žensko' : 'Muško'}}
+        </td>
+        <td align="center" style="width: 16%">
+          {{user.dateOfBirth | date:"dd/MM/yyyy"}}
+        </td>
+        <td align="center" style="width: 16%">
+          {{user.profession}}
+        </td>
+        <td *ngIf="user.approvedBy" align="center" style="width: 16%">
+          {{user.approvedBy}}
+        </td>
+      </tr>
+    </table>
+  </mat-card-header>
+  <mat-card-content>
+      <ng-content></ng-content>
+  </mat-card-content>
+</mat-card>

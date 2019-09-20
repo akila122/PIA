@@ -1,0 +1,19 @@
+<app-user-card [user]="user">
+  <button mat-raised-button color="primary" (click)="logout()">Izloguj se</button>
+</app-user-card>
+<mat-tab-group mat-stretch-tabs>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>add_to_queue</mat-icon>
+      Kreiranje igara
+    </ng-template>
+    <app-create-game></app-create-game>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>assignment_turned_in</mat-icon>
+      Validacija pojmova
+    </ng-template>
+    <app-validate-game></app-validate-game>
+  </mat-tab>
+</mat-tab-group>

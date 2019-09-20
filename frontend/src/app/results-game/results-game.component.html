@@ -1,0 +1,79 @@
+<div style="display: flex;
+align-items: center;
+justify-content: center;">
+  <form #anagramForm="ngForm">
+    <table style="align-content: center">
+      <tr *ngIf="infoMsg">
+        <td>
+          <h1 [style.color]="infoColor">
+            {{infoMsg}}
+          </h1>
+        </td>
+      </tr>
+      <tr *ngIf="doSpin">
+        <td>
+          <mat-spinner style="margin:0 auto;" [diameter]="20"></mat-spinner>
+        </td>
+      </tr>
+      <tr *ngIf="loaded">
+        <td>
+          <table style="align-content: center">
+            <tr>
+              <td>
+                <mat-icon>videogame_asset</mat-icon>
+              </td>
+              <td>
+                <h3 style="color: #3f51b5">
+                  <mat-icon>face</mat-icon>
+                </h3>
+              </td>
+              <td>
+                <h3 style="color: #f44336">
+                  <mat-icon>face</mat-icon>
+                </h3>
+
+              </td>
+            </tr>
+            <tr *ngFor="let res of results.points;let i = index">
+              <td>
+                <h3>
+                  <mat-icon>{{icons[i]}}</mat-icon>
+                </h3>
+              </td>
+              <td style="color: #3f51b5">
+                <h3>+{{res.bluePoints}}</h3>
+              </td>
+              <td style="color: #f44336">
+                <h3>+{{res.redPoints}}</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>
+                  <mat-icon>functions</mat-icon> UKUPNO
+                </h3>
+              </td>
+              <td>
+                <h3 style="color: #3f51b5">
+                  {{results.total.bluePoints}}
+                </h3>
+              </td>
+              <td>
+                <h3 style="color: #f44336">
+                  {{results.total.redPoints}}
+                </h3>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr *ngIf="loaded">
+        <td>
+          <button mat-raised-button color="primary" (click)="go()">
+            <mat-icon>home</mat-icon>Nazad na početnu
+          </button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

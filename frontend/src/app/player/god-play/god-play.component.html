@@ -1,0 +1,26 @@
+<div style="display: flex;
+align-items: center;
+justify-content: center;">
+  <table style="align-content: center;text-align: center;margin-top: 5%">
+    <tr *ngIf="infoMsg">
+        <h1>{{infoMsg}}</h1>
+    </tr>
+    <tr *ngIf="doSpin">
+      <td>
+        <mat-spinner style="margin:0 auto;padding-top: 2%" [diameter]="20"></mat-spinner>
+      </td>
+    </tr>
+    <tr *ngIf="loaded">
+      <td>
+          <h1>Dostupna igra za danas je {{translate[data.GoD.game.kind]}}</h1>
+      </td>
+    </tr>
+    <tr *ngIf="loaded">
+      <td>
+        <button style="width: 100%" mat-raised-button color="primary" (click)="play()">
+          <mat-icon>{{icons[data.GoD.game.kind]}}</mat-icon>Igraj
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

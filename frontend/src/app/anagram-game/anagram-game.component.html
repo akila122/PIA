@@ -1,0 +1,48 @@
+<div style="display: flex;
+align-items: center;
+justify-content: center;">
+  <form #anagramForm="ngForm">
+    <table style="align-content: center">
+      <tr *ngIf="infoMsg">
+        <td>
+          <h1 [style.color]="infoColor">
+            {{infoMsg}}
+          </h1>
+        </td>
+      </tr>
+      <tr *ngIf="doSpin">
+        <td>
+          <mat-spinner style="margin:0 auto;" [diameter]="20"></mat-spinner>
+        </td>
+      </tr>
+      <tr *ngIf="loaded">
+        <td>
+          <h1>A N A G R A M</h1>
+        </td>
+      </tr>
+      <tr *ngIf="loaded">
+        <td>
+          <h1>{{anagram.data.question}}</h1>
+        </td>
+      </tr>
+      <tr *ngIf="loaded">
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Odgovor" id="_answer" name="_answer" [(ngModel)]="answer" #_answer="ngModel"
+              required pattern="^([a-zA-Z]|\s|š|Š|đ|Đ|Č|č|Ć|ć|Ž|ž)+$">
+            <mat-error *ngIf="_answer.invalid && (_answer.dirty || _answer.touched)">
+             <strong>Nevalidan</strong> unos
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr *ngIf="loaded">
+        <td>
+          <button mat-raised-button color="primary" [disabled]="!anagramForm.valid" (click)="submit(true)">
+            <mat-icon>save_alt</mat-icon>Potvrdi
+          </button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

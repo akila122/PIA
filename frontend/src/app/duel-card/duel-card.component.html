@@ -1,0 +1,128 @@
+<table *ngIf="data && !solo " style="width: 100%; height:10%">
+  <tr>
+    <td
+      style="width:15%; max-width: 15%; border-color: #3f51b5;border-width: 10px; border-style: dashed;border-radius: 30px">
+      <app-user-card [shortVersion]="true" [user]="data.blueUser">
+        <h1 style="color:#3f51b5">
+          <mat-icon>face</mat-icon>{{data.bluePoints}}
+        </h1>
+      </app-user-card>
+    </td>
+    <td>
+      <table style="width:100%">
+        <tr>
+          <td *ngIf="game==0">
+            <h1>
+              <mat-icon>spellcheck</mat-icon>Anagram
+            </h1>
+          </td>
+          <td *ngIf="game==1">
+            <h1>
+              <mat-icon>functions</mat-icon>Moj broj
+            </h1>
+          </td>
+          <td *ngIf="game==2">
+            <h1>
+              <mat-icon>border_all</mat-icon>5x5
+            </h1>
+          </td>
+          <td *ngIf="game==3">
+            <h1>
+              <mat-icon>language</mat-icon>Zanimljiva geografija
+            </h1>
+          </td>
+          <td *ngIf="game==4">
+            <h1>
+              <mat-icon>local_bar</mat-icon>Pehar
+            </h1>
+          </td>
+          <td *ngIf="game==5">
+            <h1>
+              <mat-icon>all_done</mat-icon>Rezultati
+            </h1>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h1 [style.color]="timerColor">
+              <mat-icon>access_alarm</mat-icon><span *ngIf="time!=0"> {{time|minuteSeconds}}</span>
+            </h1>
+          </td>
+        </tr>
+      </table>
+    </td>
+
+    <td>
+
+    </td>
+    <td
+      style="width:15%; max-width: 15%; border-color: #f44336;border-width: 10px;border-style: dashed;border-radius: 30px">
+      <app-user-card [shortVersion]="true" [user]="data.redUser">
+        <h1 style="color:#f44336">
+          <mat-icon>face</mat-icon>{{data.redPoints}}
+        </h1>
+      </app-user-card>
+    </td>
+  </tr>
+</table>
+
+
+
+
+
+<table *ngIf="data && solo " style="width: 100%; height:10%">
+  <tr>
+    <td style="border-color: #673ab7;border-width: 10px; border-style: dashed;border-radius: 30px">
+      <app-user-card [shortVersion]="true" [user]="data.blueUser">
+        <h1 style="color:#673ab7">
+          <mat-icon>face</mat-icon>{{data.bluePoints}}
+        </h1>
+      </app-user-card>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table style="width:100%">
+        <tr>
+          <td *ngIf="game==0">
+            <h1>
+              <mat-icon>spellcheck</mat-icon>Anagram
+            </h1>
+          </td>
+          <td *ngIf="game==1">
+            <h1>
+              <mat-icon>functions</mat-icon>Moj broj
+            </h1>
+          </td>
+          <td *ngIf="game==2">
+            <h1>
+              <mat-icon>border_all</mat-icon>5x5
+            </h1>
+          </td>
+          <td *ngIf="game==3">
+            <h1>
+              <mat-icon>language</mat-icon>Zanimljiva geografija
+            </h1>
+          </td>
+          <td *ngIf="game==4">
+            <h1>
+              <mat-icon>local_bar</mat-icon>Pehar
+            </h1>
+          </td>
+          <td *ngIf="game==5">
+            <h1>
+              <mat-icon>all_done</mat-icon>Rezultati
+            </h1>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h1 [style.color]="timerColor">
+              <mat-icon>access_alarm</mat-icon><span *ngIf="time!=0"> {{time|minuteSeconds}}</span>
+            </h1>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

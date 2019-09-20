@@ -1,0 +1,39 @@
+<div *ngIf="!doSpin && !errMsg && !infoMsg" style="display: flex;
+align-items: center;
+justify-content: center;">
+  <h1><mat-icon>spellcheck</mat-icon>Dodajte anagram</h1>
+  <form #anagramForm="ngForm">
+    <table style="margin-left: 3%">
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Anagram" id="question" name="question" [(ngModel)]="model.data.question"
+              #question="ngModel" required>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Odgovor" id="answer" name="answer" [(ngModel)]="model.data.answer"
+              #answer="ngModel" required>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button mat-raised-button color="primary" [disabled]="!anagramForm.valid" (click)="send()">
+            Pošalji
+          </button>
+        </td>
+      </tr>
+    </table>
+
+  </form>
+</div>
+<mat-spinner *ngIf="doSpin"></mat-spinner>
+<mat-error *ngIf="errMsg && !doSpin">
+  {{errMsg}} <mat-icon>error</mat-icon>
+</mat-error>
+<h5 *ngIf="infoMsg" style="color:green">{{infoMsg}} <mat-icon>check_circle</mat-icon>
+</h5>

@@ -1,0 +1,26 @@
+<app-user-card [user]="user">
+    <button mat-raised-button color="primary" (click)="logout()">Izloguj se</button>
+</app-user-card>
+<mat-tab-group mat-stretch-tabs>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>games</mat-icon>
+        Partije
+      </ng-template>
+      <app-game-room></app-game-room>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>control_camera</mat-icon>
+        Igra dana
+      </ng-template>
+      <app-god-play></app-god-play>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>grade</mat-icon>
+          Rang liste igara
+        </ng-template>
+        <app-god-rank></app-god-rank>
+      </mat-tab>
+  </mat-tab-group>

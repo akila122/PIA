@@ -1,0 +1,25 @@
+<div style="display: flex;
+align-items: center;
+justify-content: center;">
+  <form>
+    <table style="text-align: center">
+      <tr>
+        <h1>Pregled liste najboljih takmičara</h1>
+      </tr>
+      <tr>
+        <td style="width: 100%">
+          <button style="width: 100%" mat-raised-button color="primary"  (click)="monthly()">
+            <mat-icon>emoji_events</mat-icon>Tekući mesec
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td style="width: 100%">
+          <button style="width: 100%" mat-raised-button color="primary"  (click)="last20()">
+            <mat-icon>emoji_events</mat-icon>Poslednjih dvadeset dana
+          </button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

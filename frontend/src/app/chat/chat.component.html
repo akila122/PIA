@@ -1,0 +1,49 @@
+<table style="align-content: center; width: 100%;height: 100%">
+  <tr style="align-content: center; width: 100%; height: 80%">
+    <td>
+      <table style="align-content: center; width: 100%;height: 100%">
+        <tr style="width: 100%;height:100%">
+          <td style="width: 90%;height:100%">
+            <mat-form-field style="width: 100%">
+              <input style="width: 100%" matInput placeholder="Poruka" id="_msg" name="_msg" [(ngModel)]="msg"
+                #_msg="ngModel">
+            </mat-form-field>
+          </td>
+          <td style="width: 10%;height:100%">
+            <button style="width: 100%" mat-raised-button color="primary" (click)="send()">
+              <mat-icon>send</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr style="align-content: center; width: 100%; height: 80%;">
+    <td style="height: 100%;width: 100%">
+      <table style="align-content: center; width: 100%;" class="fixed_header">
+        <ng-container *ngFor="let msg of mailbox">
+
+
+          <tr style="align-content: center; width: 100%;height: 100%; min-width: 100%">
+            <td style="width: 100%;height: 100% ;min-width:  100%;">
+
+
+
+              <img [src]="usernameToImg[msg.username]" style=" vertical-align: middle;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              border:2px solid #673ab7">
+
+
+              {{msg.ts | date : 'shortTime'}} : <em>{{msg.msg}}</em> 
+
+            </td>
+
+          </tr>
+        </ng-container>
+      </table>
+    </td>
+  </tr>
+
+</table>

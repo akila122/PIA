@@ -1,0 +1,53 @@
+<div *ngIf="!doSpin && !errMsg && !infoMsg" style="display: flex;
+align-items: center;
+justify-content: center;">
+
+  <table>
+    <tr>
+      <td>
+        <h1>
+          <mat-icon>local_bar</mat-icon>Dodajte pehar
+        </h1>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button mat-raised-button color="primary" [disabled]="!grailForm.valid" (click)="send()">
+          Pošalji
+        </button>
+      </td>
+    </tr>
+  </table>
+  <form #grailForm="ngForm">
+    <table style="margin-left: 5%;text-align: center">
+      <tr *ngFor="let grail of model.data; let i = index">
+        <td>
+          <mat-form-field>
+            <input style="text-align: center" placeholder="{{i+1}}. pitanje" matInput id="{{i}}row_" name="{{i}}row_"
+              [(ngModel)]="grail.question" #{{i}}row_="ngModel" required>
+          </mat-form-field>
+        </td>
+        <td *ngIf="i<=6">
+          <mat-form-field [style.width.px]="(7-i)*25">
+            <input matInput style="text-align: center" placeholder="{{i+1}}. odgovor" id="{{i}}row" name="{{i}}row"
+              [(ngModel)]="grail.answer" #{{i}}row="ngModel" required maxlength="{{9-i}}">
+          </mat-form-field>
+
+        </td>
+        <td *ngIf="i>6">
+          <mat-form-field [style.width.px]="(i-5)*25">
+            <input matInput style="text-align: center" placeholder="{{i+1}}. odgovor" id="{{i}}row" name="{{i}}row"
+              [(ngModel)]="grail.answer" ##{{i}}row="ngModel" required maxlength="{{i-3}}">
+          </mat-form-field>
+        </td>
+      </tr>
+
+    </table>
+  </form>
+</div>
+<mat-spinner *ngIf="doSpin"></mat-spinner>
+<mat-error *ngIf="errMsg && !doSpin">
+  {{errMsg}} <mat-icon>error</mat-icon>
+</mat-error>
+<h5 *ngIf="infoMsg" style="color:green">{{infoMsg}} <mat-icon>check_circle</mat-icon>
+</h5>

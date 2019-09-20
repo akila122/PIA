@@ -1,0 +1,63 @@
+<div *ngIf="!doSpin && !errMsg && !infoMsg" style="display: flex;
+align-items: center;
+justify-content: center;">
+  <h1><mat-icon>border_all</mat-icon>Dodajte 5x5</h1>
+  <form #fivesForm="ngForm">
+    <table style="margin-left: 3%">
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Prvi red" id="first" name="first" [(ngModel)]="model.data[0]"
+              first="ngModel" required pattern=".{5}" maxlength="5" size="5">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Drugi red" id="second" name="second" [(ngModel)]="model.data[1]"
+              #second="ngModel" required pattern=".{5}" maxlength="5" size="5">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Treći red" id="third" name="third" [(ngModel)]="model.data[2]"
+              #third="ngModel" required pattern=".{5}" maxlength="5" size="5">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Četvrti red" id="fourth" name="fourth" [(ngModel)]="model.data[3]"
+              #fourth="ngModel" required pattern=".{5}" maxlength="5" size="5">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Peti red" id="fifth" name="fifth" [(ngModel)]="model.data[4]"
+              #fifth="ngModel" required pattern=".{5}" maxlength="5" size="5">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button mat-raised-button color="primary" [disabled]="!fivesForm.valid" (click)="send()">
+            Pošalji
+          </button>
+        </td>
+      </tr>
+    </table>
+
+  </form>
+</div>
+<mat-spinner *ngIf="doSpin"></mat-spinner>
+<mat-error *ngIf="errMsg && !doSpin">
+  {{errMsg}} <mat-icon>error</mat-icon>
+</mat-error>
+<h5 *ngIf="infoMsg" style="color:green">{{infoMsg}} <mat-icon>check_circle</mat-icon>
+</h5>

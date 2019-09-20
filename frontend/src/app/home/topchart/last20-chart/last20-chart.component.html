@@ -1,0 +1,50 @@
+<div style="display: flex;
+align-items: center;
+justify-content: center; overflow-y: auto">
+  <table style="align-content: center">
+    <tr *ngIf="doSpin">
+      <td>
+        <mat-spinner style="margin:0 auto;" [diameter]="20"></mat-spinner>
+      </td>
+    </tr>
+    <tr *ngIf="loaded">
+      <td>
+        <h1><mat-icon>calendar_today</mat-icon>{{label}}</h1>
+      </td>
+    </tr>
+    <tr *ngIf="loaded">
+      <td>
+        <table style="text-align: center">
+          <tr>
+            <td style="width: 100%">
+              <mat-paginator #paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize"
+                [pageSizeOptions]="[2,3,5]" (page)="pageEvent = fetch($event)">
+              </mat-paginator>
+            </td>
+          </tr>
+          <ng-container *ngFor="let x of data;let i = index">
+            <ng-container *ngIf="i>=(pageSize*pageIndex) && i<(((pageIndex+1)*pageSize))">
+              <tr style="text-align: center">
+                <td>
+                  <app-user-card [user]="x.user" [shortVersion]="true">
+                    <h2 style="color:	#FFD700" *ngIf="i==0">
+                        <mat-icon>emoji_events</mat-icon>
+                    </h2>
+                    <h2 style="color:	#C0C0C0" *ngIf="i==1">
+                        <mat-icon>emoji_events</mat-icon>
+                    </h2>
+                    <h2 style="color:	#cd7f32" *ngIf="i==2">
+                        <mat-icon>emoji_events</mat-icon>
+                    </h2>
+
+                    <h2 style="color: #673ab7;"> {{x.points}}</h2>
+                  </app-user-card>
+                </td>
+              </tr>
+            </ng-container>
+          </ng-container>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,60 @@
+<div style="display: flex;
+align-items: center;
+justify-content: center;">
+  <form #fivesForm="ngForm">
+    <table style="align-content: center;text-align: center">
+      <tr *ngIf="infoMsg">
+        <td style="width: 100%;">
+          <h1 style="text-align: center; width: 100%;" [style.color]="infoColor">
+            {{infoMsg}}
+          </h1>
+        </td>
+      </tr>
+      <tr *ngIf="doSpin">
+        <td>
+          <mat-spinner style="margin:0 auto;" [diameter]="20"></mat-spinner>
+        </td>
+      </tr>
+      <tr *ngIf="loaded" style="align-content: center">
+        <td style="align-content: center">
+          <button mat-raised-button color="primary" [disabled]="!myTurn" (click)="submit(true)">
+            <mat-icon>save_alt</mat-icon>Potvrdi
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="loaded">
+        <td>
+          <table style="align-content: center; display: flex;
+          align-items: center;
+          justify-content: center; width: 100%;text-align: center;
+          margin-top: 2%">
+            <tr *ngFor="let grail of grailForm; let i = index" style="align-content: center">
+              <td *ngIf="i<=6" style="align-content: center;border-radius: 30px"
+                [style.border]="iter==i ? '5px dashed #673ab7' :''">
+                <mat-form-field [style.width.px]="(7-i)*30">
+                  <input matInput style="text-align: center;text-transform:uppercase" id="{{i}}row" name="{{i}}row"
+                    [(ngModel)]="grail.model" #{{i}}row="ngModel" maxlength="{{9-i}}" [style.color]="grail.color"
+                    [readonly]="!(iter==i && myTurn)">
+                </mat-form-field>
+              </td>
+              <td *ngIf="i>6" style="align-content: center;border-radius: 30px"
+                [style.border]="iter==i ? '5px dashed #673ab7' :''">
+                <mat-form-field [style.width.px]="(i-5)*30">
+                  <input matInput style="text-align: center;text-transform:uppercase" id="{{i}}row" name="{{i}}row"
+                    [(ngModel)]="grail.model" #{{i}}row="ngModel" maxlength="{{i-3}}" [style.color]="grail.color"
+                    [readonly]="!(iter==i && myTurn)">
+                </mat-form-field>
+              </td>
+              <td>
+                <h5 *ngIf="iter==i && myTurn" style="color: #673ab7;margin-left: 5%;max-width: 30%">
+                  {{grail.question.toUpperCase()}}?
+                </h5>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

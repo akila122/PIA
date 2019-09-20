@@ -1,0 +1,25 @@
+<div style="display: flex;
+align-items: center;
+justify-content: center;">
+  <form>
+    <table style="text-align: center">
+      <tr>
+        <h1>Pregled liste najboljih takmičara</h1>
+      </tr>
+      <tr>
+        <td style="width: 100%">
+          <button style="width: 100%" mat-raised-button color="primary"  (click)="duelChart()">
+            <mat-icon>emoji_events</mat-icon>Istorija partija u prethodnih sedam dana
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td style="width: 100%">
+          <button style="width: 100%" mat-raised-button color="primary"  (click)="godChart()">
+            <mat-icon>emoji_events</mat-icon>Top deset igre dana
+          </button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

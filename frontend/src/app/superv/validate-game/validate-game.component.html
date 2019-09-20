@@ -1,0 +1,53 @@
+<div style="display: flex;
+align-items: center;
+justify-content: center;">
+
+  <table style="align-content: center">
+    <tr *ngIf="doSpin">
+      <td>
+        <mat-spinner style="margin:0 auto;" [diameter]="40"></mat-spinner>
+      </td>
+    </tr>
+    <tr *ngIf="!doSpin">
+      <td>
+        <h5 style="color:green">{{games.length>0 ? 'Dostupne partije' : 'Nema dostupnih partija'}}</h5>
+      </td>
+    </tr>
+    <div style="display: flex;
+    align-items: center;
+    justify-content: center;" *ngIf="!doSpin">
+      <tr *ngFor="let game of games">
+        <ng-container *ngIf="!game.solo">
+          <td style="width: 90%">
+            <app-duel-supervisor [data]="game"></app-duel-supervisor>
+          </td>
+          <td style="width: 10%">
+            <button mat-raised-button color="primary" (click)="addGame(game)">
+              <mat-icon>add</mat-icon>Validiraj
+            </button>
+          </td>
+        </ng-container>
+        <ng-container *ngIf="game.solo">
+          <td style="width: 90%;border-color: #673ab7;border-width: 10px; border-style: dashed;border-radius: 30px">
+            <app-user-card [shortVersion]="true" [user]="game.blueUser">
+              <h5>IGRA DANA</h5>
+            </app-user-card>
+          </td>
+          <td style="width: 10%">
+            <button mat-raised-button color="primary" (click)="addGame(game)">
+              <mat-icon>add</mat-icon>Validiraj
+            </button>
+          </td>
+        </ng-container>
+
+      </tr>
+    </div>
+    <tr>
+      <td>
+        <div style="height: 100px; width: 100px"></div>
+      </td>
+    </tr>
+  </table>
+
+
+</div>

@@ -1,0 +1,19 @@
+<app-user-card [user]="user">
+        <button mat-raised-button color="primary" (click)="logout()">Izloguj se</button>
+</app-user-card>
+<mat-tab-group mat-stretch-tabs>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>security</mat-icon>
+      Prijave korisnika
+    </ng-template>
+    <app-user-approve></app-user-approve>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>gamepad</mat-icon>
+      Kontrola igre dana
+    </ng-template>
+    <app-godcontrol></app-godcontrol>
+  </mat-tab>
+</mat-tab-group>
